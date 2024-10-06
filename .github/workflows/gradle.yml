@@ -7,23 +7,6 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build:
-
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-
-    steps:
-    - uses: actions/checkout@v4
-    - name: Set up JDK 21
-      uses: actions/setup-java@v4
-      with:
-        java-version: '21'
-        distribution: 'temurin'
-
-    - name: Build with Gradle Wrapper
-      run: ./gradlew build
-
   test:
     runs-on: ubuntu-latest
     permissions:
@@ -37,7 +20,5 @@ jobs:
         java-version: '21'
         distribution: 'temurin'
 
-    # Generates and submits a dependency graph, enabling Dependabot Alerts for all project dependencies.
-    # See: https://github.com/gradle/actions/blob/main/dependency-submission/README.md
     - name: Run the tests
       run: ./gradlew test
